@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message ImageDataBlock {
+    string name = 1;
+    bytes data_block = 3;
+    string data_block_hash = 4;
+    string data_hash = 5;
+}
+
+message DetectResult {
+    int32 row = 1;
+    int32 col = 2;
+    int32 id = 3;
+}
+
+service ImageDetector {
+    rpc DetectImage (stream ImageDataBlock) returns (DetectResult);
+}
